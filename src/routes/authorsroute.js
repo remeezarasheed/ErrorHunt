@@ -34,7 +34,7 @@ authorsRouter.post('/add', function (req, res) {
 
     var item={
         title:req.body.title,
-        image:req.body.image,
+        image:req.body.image, //Part #2 Point 8
         about:req.body.about
     }
     console.log(item)  ;
@@ -63,8 +63,8 @@ authorsRouter.get('/:id',function(req,res){
 
 
 
-//router to delete author
-authorsRouter.post('/delete', function (req, res) {
+//router to delete author Part #2 Point 9
+authorsRouter.delete('/delete', function (req, res) {
 
     const id = req.body.id;  
 
@@ -94,9 +94,10 @@ authorsRouter.post('/edit', function (req, res) {
 
 
 
-//router to update author
-authorsRouter.post('/update', function (req, res) {
 
+//router to update author Part #2 Point 9
+authorsRouter.put('/update', function (req, res) {
+    console.log(req.body.id)
     authordata.findByIdAndUpdate(req.body.id, { $set: req.body }, function (err, data) {
         if (err) {
             res.json({ status: "Failed" });
